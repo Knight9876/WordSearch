@@ -497,23 +497,3 @@ button span {
         gap: 2rem;
     }
 }
-
-@media screen and (max-width: 650px) {
-    #word-list li {
-        font-size: 0.8rem;
-    }
-    
-    #word-grid div {
-        font-size: 0.8rem;
-        width: 25px;
-        height: 25px;
-    }
-
-    .puzzle-container {
-        display: flex;
-        gap: 0;
-        align-items: normal;
-        width: max-content;
-        height: max-content;
-    }
-}
