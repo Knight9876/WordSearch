@@ -417,7 +417,7 @@ button span {
     .metrics {
         display: flex;
         flex-direction: row;
-        gap: 1remx;
+        gap: 2rem;
         top: 91%;
         left: 50%;
         transform: translateX(-50%);
@@ -427,7 +427,7 @@ button span {
         border: none;
         height: 5rem;
         box-shadow: none;
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 }
 
@@ -460,7 +460,7 @@ button span {
         top: 85%;
         left: 50%;
         transform: translateX(-50%);
-        gap: 1rem;
+        gap: 2rem;
         width: 90%;
         padding-bottom: 1rem;
     }
