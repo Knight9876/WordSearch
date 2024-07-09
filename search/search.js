@@ -274,7 +274,3 @@ if (window.matchMedia("(max-width: 1100px)").matches) {
   wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 30px)`;
   wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 30px)`; 
 }
-if (window.matchMedia("(max-width: 650px)").matches) {
-  wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 25px)`;
-  wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 25px)`; 
-}
