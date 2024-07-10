@@ -479,6 +479,10 @@ button span {
         height: max-content;
         margin-top: -4rem;
     }
+
+    #word {
+        margin-top: -4rem;
+    }
 }
 
 @media screen and (max-width: 850px) {
