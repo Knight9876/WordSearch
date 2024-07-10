@@ -428,6 +428,7 @@ button span {
         height: 5rem;
         box-shadow: none;
         font-size: 1rem;
+        width: max-content;
     }
 }
 
@@ -501,8 +502,12 @@ button span {
 
 @media screen and (max-width: 650px){
     #word-grid div {
-        font-size: 0.8rem;
-        width: 25px;
-        height: 25px;
+        font-size: 0.6rem;
+        width: 20px;
+        height: 20px;
+    }
+
+    .levels {
+        gap: 1rem;
     }
 }
