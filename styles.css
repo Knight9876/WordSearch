@@ -417,7 +417,7 @@ button span {
     .metrics {
         display: flex;
         flex-direction: row;
-        gap: 2rem;
+        gap: 1rem;
         top: 91%;
         left: 50%;
         transform: translateX(-50%);
@@ -427,7 +427,7 @@ button span {
         border: none;
         height: 5rem;
         box-shadow: none;
-        font-size: 2rem;
+        font-size: 1rem;
     }
 }
 
@@ -460,7 +460,7 @@ button span {
         top: 85%;
         left: 50%;
         transform: translateX(-50%);
-        gap: 2rem;
+        gap: 1rem;
         width: 90%;
         padding-bottom: 1rem;
     }
@@ -470,6 +470,7 @@ button span {
         gap: 0;
         width: max-content;
         height: max-content;
+        margin-top: -4rem;
     }
 }
 
@@ -495,5 +496,13 @@ button span {
 
     .levels {
         gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 650px){
+    #word-grid div {
+        font-size: 0.8rem;
+        width: 25px;
+        height: 25px;
     }
 }
