@@ -101,6 +101,7 @@ button {
     animation: tracking-out-expand-fwd 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
+#word,
 .puzzle-container,
 .metrics {
     display: flex;
@@ -109,6 +110,12 @@ button {
     font-family: "Signika Negative", sans-serif;
     font-weight: 1000;
     text-shadow: 0.15rem 0.15rem 0.15rem black;
+}
+
+#word {
+    font-size: 2rem;
+    height: 2rem;
+    padding-bottom: 1rem;
 }
 
 #word-grid {
@@ -418,9 +425,8 @@ button span {
         display: flex;
         flex-direction: row;
         gap: 1rem;
-        top: 91%;
+        top: 96%;
         left: 50%;
-        transform: translateX(-50%);
     }   
     
     #score, #best-score, #time {
