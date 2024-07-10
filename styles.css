@@ -481,7 +481,8 @@ button span {
     }
 
     #word {
-        margin-top: 4rem;
+        position: absolute;
+        top: 10%;
     }
 }
 
