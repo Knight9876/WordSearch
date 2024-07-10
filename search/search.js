@@ -2,6 +2,7 @@ const wordGrid = document.getElementById("word-grid");
 const time = document.getElementById("time");
 const scoreDiv = document.getElementById("score");
 const bestScoreDiv = document.getElementById("best-score");
+const word = document.getElementById("word");
 
 const gridSize = Number(sessionStorage.getItem("gridSize"));
 wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
@@ -10,12 +11,12 @@ wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 40px)`;
 let popUp = document.getElementById("pop-up");
 
 let score = 0;
-let bestScore = Number(localStorage.getItem("bestScore"))
+let bestScore = Number(localStorage.getItem("bestScore"));
 let comboMultiplier = 1;
 let lastWordFoundTime = 0;
-const comboTimeLimit = 5000; 
+const comboTimeLimit = 5000;
 
-bestScoreDiv.innerHTML = `Best Score <br> ${bestScore}`
+bestScoreDiv.innerHTML = `Best Score <br> ${bestScore}`;
 
 async function generatePuzzle() {
   popUp.style.visibility = "hidden";
@@ -23,7 +24,6 @@ async function generatePuzzle() {
   time.innerHTML = `Time <br> ${seconds}`;
   let timer;
 
-  
   clearInterval(timer);
   timer = setInterval(() => {
     seconds += 1;
@@ -129,7 +129,9 @@ async function generatePuzzle() {
       popUp.style.visibility = "visible";
       document.getElementById("pop-up-text").innerHTML = `You took ${Math.floor(
         seconds / 60
-      )} minutes and ${seconds % 60} seconds. <br> Your final score is: ${score} <br> Your best score was: ${bestScore}`;
+      )} minutes and ${
+        seconds % 60
+      } seconds. <br> Your final score is: ${score} <br> Your best score was: ${bestScore}`;
     }
   }
 
@@ -139,6 +141,7 @@ async function generatePuzzle() {
     dragCells = [startCell];
     highlightColor = getRandomColor();
     startCell.style.backgroundColor = highlightColor;
+    word.innerHTML = startCell.innerHTML;
     event.preventDefault();
   }
 
@@ -147,7 +150,11 @@ async function generatePuzzle() {
       endCell = target;
       if (!dragCells.includes(endCell)) {
         dragCells.push(endCell);
+        // for (const cells of dragCells) {
+        //   word.innerHTML += cells.innerHTML
+        // }
         endCell.style.backgroundColor = highlightColor;
+        word.innerHTML += endCell.innerHTML;
       }
     }
   }
@@ -161,6 +168,8 @@ async function generatePuzzle() {
         .reverse()
         .join("");
 
+      // word.innerHTML = formedWord
+
       if (
         selectedWords.includes(formedWord) ||
         selectedWords.includes(reversedFormedWord)
@@ -173,12 +182,10 @@ async function generatePuzzle() {
         if (wordItem) {
           wordItem.classList.add("found");
 
-          
           const wordLength = formedWord.length;
           const baseScore = wordLength * 10;
           const currentTime = Date.now();
 
-          
           if (currentTime - lastWordFoundTime <= comboTimeLimit) {
             comboMultiplier += 1;
           } else {
@@ -189,11 +196,10 @@ async function generatePuzzle() {
           const comboScore = baseScore * comboMultiplier;
           score += comboScore;
 
-          score > bestScore ? bestScore = score : bestScore
-          localStorage.setItem("bestScore", bestScore)
-          bestScoreDiv.innerHTML = `Best Score <br> ${bestScore}`
+          score > bestScore ? (bestScore = score) : bestScore;
+          localStorage.setItem("bestScore", bestScore);
+          bestScoreDiv.innerHTML = `Best Score <br> ${bestScore}`;
 
-          
           comboMultiplier > 1
             ? (scoreDiv.innerHTML = `Score <br> ${score} (x${comboMultiplier})`)
             : (scoreDiv.innerHTML = `Score <br> ${score}`);
@@ -204,6 +210,7 @@ async function generatePuzzle() {
       }
 
       dragCells = [];
+      word.innerHTML = "";
     }
   }
 
@@ -262,18 +269,18 @@ async function fetchRandomWords(count, length) {
   const wordList = words;
   const filteredWords = wordList
     .filter((word) => word.length <= length)
-    .slice(0, count); 
-  return filteredWords.sort(); 
+    .slice(0, count);
+  return filteredWords.sort();
 }
 
 generatePuzzle();
 
 if (window.matchMedia("(max-width: 1100px)").matches) {
   wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 30px)`;
-  wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 30px)`; 
+  wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 30px)`;
 }
 
 if (window.matchMedia("(max-width: 650px)").matches) {
   wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 20px)`;
-  wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 20px)`; 
+  wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 20px)`;
 }
