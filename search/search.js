@@ -4,6 +4,7 @@ const scoreDiv = document.getElementById("score");
 const bestScoreDiv = document.getElementById("best-score");
 const word = document.getElementById("word");
 const toggleBg = document.getElementById("toggle-bg");
+const theme = document.getElementById("theme");
 const themeFill = document.querySelector(".theme__fill");
 const themeIcon = document.querySelector(".theme__icon");
 const body = document.body;
@@ -13,8 +14,10 @@ let bgChanged = JSON.parse(sessionStorage.getItem("bgChanged"));
 
 if (bgChanged) {
   body.style.background = "black";
+  theme.checked = true
 } else {
   body.style.background = "linear-gradient(135deg, #f6d365, #fda085)";
+  theme.checked = false
 }
 
 wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;

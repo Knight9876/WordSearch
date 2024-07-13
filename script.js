@@ -4,6 +4,7 @@ const hard = document.getElementById("hard")
 const h = document.getElementsByClassName("tracking-in-contract-bck")
 const levels = document.querySelector(".levels")
 const toggleBg = document.getElementById("toggle-bg")
+const theme = document.getElementById("theme")
 const themeFill = document.querySelector(".theme__fill")
 const themeIcon = document.querySelector(".theme__icon")
 const body = document.body
@@ -12,8 +13,10 @@ let bgChanged = JSON.parse(sessionStorage.getItem("bgChanged"));
 
 if (bgChanged) {
   body.style.background = "black";
+  theme.checked = true
 } else {
-  body.style.background = "linear-gradient(135deg, #f6d365, #fda085)";
+    body.style.background = "linear-gradient(135deg, #f6d365, #fda085)";
+    theme.checked = false
 }
 
 easy.addEventListener("click", () => {
