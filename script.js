@@ -3,6 +3,18 @@ const medium = document.getElementById("medium")
 const hard = document.getElementById("hard")
 const h = document.getElementsByClassName("tracking-in-contract-bck")
 const levels = document.querySelector(".levels")
+const toggleBg = document.getElementById("toggle-bg")
+const themeFill = document.querySelector(".theme__fill")
+const themeIcon = document.querySelector(".theme__icon")
+const body = document.body
+
+let bgChanged = JSON.parse(sessionStorage.getItem("bgChanged"));
+
+if (bgChanged) {
+  body.style.background = "black";
+} else {
+  body.style.background = "linear-gradient(135deg, #f6d365, #fda085)";
+}
 
 easy.addEventListener("click", () => {
     sessionStorage.setItem("gridSize", 10)
@@ -60,3 +72,42 @@ hard.addEventListener("mouseover", () => {
 hard.addEventListener("mouseout", () => {
     h[0].style.color = h[1].style.color = "white"
 })
+
+toggleBg.addEventListener("click", () => {
+    if(bgChanged) {
+        body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+        bgChanged = false
+        sessionStorage.setItem("bgChanged", bgChanged)
+    }
+    else {
+        body.style.background = "black"
+        bgChanged = true
+        sessionStorage.setItem("bgChanged", bgChanged)
+    }
+});
+
+themeFill.addEventListener("click", () => {
+    if(bgChanged) {
+        body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+        bgChanged = false
+        sessionStorage.setItem("bgChanged", bgChanged)
+    }
+    else {
+        body.style.background = "black"
+        bgChanged = true
+        sessionStorage.setItem("bgChanged", bgChanged)
+    }
+});
+
+themeIcon.addEventListener("click", () => {
+    if(bgChanged) {
+        body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+        bgChanged = false
+        sessionStorage.setItem("bgChanged", bgChanged)
+    }
+    else {
+        body.style.background = "black"
+        bgChanged = true
+        sessionStorage.setItem("bgChanged", bgChanged)
+    }
+});

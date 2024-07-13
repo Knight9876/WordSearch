@@ -3,8 +3,20 @@ const time = document.getElementById("time");
 const scoreDiv = document.getElementById("score");
 const bestScoreDiv = document.getElementById("best-score");
 const word = document.getElementById("word");
+const toggleBg = document.getElementById("toggle-bg");
+const themeFill = document.querySelector(".theme__fill");
+const themeIcon = document.querySelector(".theme__icon");
+const body = document.body;
 
 const gridSize = Number(sessionStorage.getItem("gridSize"));
+let bgChanged = JSON.parse(sessionStorage.getItem("bgChanged"));
+
+if (bgChanged) {
+  body.style.background = "black";
+} else {
+  body.style.background = "linear-gradient(135deg, #f6d365, #fda085)";
+}
+
 wordGrid.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
 wordGrid.style.gridTemplateRows = `repeat(${gridSize}, 40px)`;
 
@@ -272,6 +284,45 @@ async function fetchRandomWords(count, length) {
     .slice(0, count);
   return filteredWords.sort();
 }
+
+toggleBg.addEventListener("click", () => {
+  if(bgChanged) {
+      body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+      bgChanged = false
+      sessionStorage.setItem("bgChanged", bgChanged)
+  }
+  else {
+      body.style.background = "black"
+      bgChanged = true
+      sessionStorage.setItem("bgChanged", bgChanged)
+  }
+});
+
+themeFill.addEventListener("click", () => {
+  if(bgChanged) {
+      body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+      bgChanged = false
+      sessionStorage.setItem("bgChanged", bgChanged)
+  }
+  else {
+      body.style.background = "black"
+      bgChanged = true
+      sessionStorage.setItem("bgChanged", bgChanged)
+  }
+});
+
+themeIcon.addEventListener("click", () => {
+  if(bgChanged) {
+      body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+      bgChanged = false
+      sessionStorage.setItem("bgChanged", bgChanged)
+  }
+  else {
+      body.style.background = "black"
+      bgChanged = true
+      sessionStorage.setItem("bgChanged", bgChanged)
+  }
+});
 
 generatePuzzle();
 
