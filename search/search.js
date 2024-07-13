@@ -10,13 +10,15 @@ const themeIcon = document.querySelector(".theme__icon");
 const body = document.body;
 
 const gridSize = Number(sessionStorage.getItem("gridSize"));
-let bgChanged = JSON.parse(sessionStorage.getItem("bgChanged"));
+let bgChanged = JSON.parse(localStorage.getItem("bgChanged"));
 
 if (bgChanged) {
-  body.style.background = "black";
+  body.style.background = "linear-gradient(135deg, white, black)";
+  themeFill.style.visibility = "hidden";
   theme.checked = true
 } else {
   body.style.background = "linear-gradient(135deg, #f6d365, #fda085)";
+  themeFill.style.visibility = "visible";
   theme.checked = false
 }
 
@@ -291,39 +293,45 @@ async function fetchRandomWords(count, length) {
 toggleBg.addEventListener("click", () => {
   if(bgChanged) {
       body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+      themeFill.style.visibility = "visible";
       bgChanged = false
-      sessionStorage.setItem("bgChanged", bgChanged)
-  }
-  else {
-      body.style.background = "black"
+      localStorage.setItem("bgChanged", bgChanged)
+    }
+    else {
+      body.style.background = "linear-gradient(135deg, white, black)"
+      themeFill.style.visibility = "hidden";
       bgChanged = true
-      sessionStorage.setItem("bgChanged", bgChanged)
+      localStorage.setItem("bgChanged", bgChanged)
   }
 });
 
 themeFill.addEventListener("click", () => {
   if(bgChanged) {
       body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+      themeFill.style.visibility = "visible";
       bgChanged = false
-      sessionStorage.setItem("bgChanged", bgChanged)
-  }
-  else {
-      body.style.background = "black"
+      localStorage.setItem("bgChanged", bgChanged)
+    }
+    else {
+      body.style.background = "linear-gradient(135deg, white, black)"
+      themeFill.style.visibility = "hidden";
       bgChanged = true
-      sessionStorage.setItem("bgChanged", bgChanged)
+      localStorage.setItem("bgChanged", bgChanged)
   }
 });
 
 themeIcon.addEventListener("click", () => {
   if(bgChanged) {
       body.style.background = "linear-gradient(135deg, #f6d365, #fda085)"
+      themeFill.style.visibility = "visible";
       bgChanged = false
-      sessionStorage.setItem("bgChanged", bgChanged)
-  }
-  else {
-      body.style.background = "black"
+      localStorage.setItem("bgChanged", bgChanged)
+    }
+    else {
+      body.style.background = "linear-gradient(135deg, white, black)"
+      themeFill.style.visibility = "hidden";
       bgChanged = true
-      sessionStorage.setItem("bgChanged", bgChanged)
+      localStorage.setItem("bgChanged", bgChanged)
   }
 });
 
